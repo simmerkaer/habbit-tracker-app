@@ -1,6 +1,12 @@
 module.exports = {
   parser: "babel-eslint",
-  extends: "airbnb",
+  env: {
+    browser: true,
+    commonjs: true,
+    es6: true,
+    node: true
+  },
+  extends: ["airbnb", "prettier"],
   plugins: ["react", "jsx-a11y", "import"],
   rules: {
     quotes: ["error", "double"],
@@ -10,6 +16,11 @@ module.exports = {
     "comma-dangle": ["error", "never"],
     "react/jsx-filename-extension": 0,
     "react/no-array-index-key": 0,
-    "arrow-parens": 0
+    "arrow-parens": 0,
+    "no-shadow": 0,
+    "no-use-before-define": ["error", { variables: false }],
+    "no-console": 0,
+    "consistent-return": 0,
+    "import/no-cycle": 0
   }
 };

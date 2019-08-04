@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
@@ -9,10 +9,11 @@ const styles = StyleSheet.create({
     flexWrap: "wrap"
   },
   square: {
-    flex: 1,
     height: 50,
-    margin: 1,
-    flexBasis: "13.5%"
+    margin: 0,
+    width: "14.28%",
+    borderColor: "white",
+    borderWidth: 1
   },
   touchable: {
     height: 50,
@@ -26,13 +27,11 @@ const styles = StyleSheet.create({
   }
 });
 
-const Day = ({ children }) => {
-  const [status, setStatus] = useState(false);
-
-  const handlePress = () => setStatus(!status);
+const Day = ({ children, index, state, onDayToggle }) => {
+  const handlePress = () => onDayToggle(index);
 
   return (
-    <View style={[styles.square, status ? styles.squareOn : styles.squareOff]}>
+    <View style={[styles.square, state ? styles.squareOn : styles.squareOff]}>
       <TouchableWithoutFeedback style={styles.touchable} onPress={handlePress}>
         <Text>{children}</Text>
       </TouchableWithoutFeedback>
